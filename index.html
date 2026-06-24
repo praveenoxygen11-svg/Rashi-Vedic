@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>True Srivastava Rashi Portal [सटीक वैदिक राशि पोर्टल]</title>
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #02001f 0%, #0b003a 35%, #230046 70%, #4b0062 100%);
+            --card-bg: rgba(255, 255, 255, 0.04);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-primary: #ffffff;
+            --text-secondary: #ccd4ff;
+            --cosmic-gold: #ffd700;
+            --accent-gradient: linear-gradient(90deg, #ff007f, #7928ca, #00dfd8, #ff007f);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0; padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            background-size: 400% 400%;
+            animation: cosmicNebula 20s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-primary);
+            padding: 20px;
+        }
+
+        @keyframes cosmicNebula {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .oracle-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--card-border);
+            padding: 4rem 3rem;
+            border-radius: 32px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+            background: linear-gradient(90deg, #ffd700, #ff007f, #00dfd8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        p.subtitle {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .input-group {
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.8rem;
+            color: var(--cosmic-gold);
+            font-weight: 600;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            color: white;
+            font-size: 1.1rem;
+            outline: none;
+            transition: all 0.4s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #ffd700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.25);
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 14px;
+            background: var(--accent-gradient);
+            background-size: 300% auto;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            box-shadow: 0 6px 20px rgba(121, 40, 202, 0.5);
+        }
+
+        .submit-btn:hover {
+            background-position: right center;
+            transform: translateY(-2px);
+        }
+
+        .result-box {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .result-box.reveal {
+            max-height: 350px;
+            opacity: 1;
+            margin-top: 3rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .zodiac-title {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .zodiac-name {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ffd700, #ff007f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.8rem;
+        }
+
+        .zodiac-desc {
+            font-size: 1rem;
+            color: #a4b3f6;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="oracle-container">
+        <h1>Vedic Rashi Finder</h1>
+        <p class="subtitle">Enter your name to reveal your true astrological Rashi automatically. <br> [स्वचालित रूप से अपनी सही राशि देखने के लिए अपना नाम दर्ज करें।]</p>
+        
+        <div class="input-group">
+            <label for="username">Enter Name [नाम दर्ज करें]</label>
+            <input type="text" id="username" placeholder="e.g., Praveen or Sadhana" autocomplete="off">
+        </div>
+        
+        <button class="submit-btn" onclick="findTrueRashi()">
+            Reveal Destiny [भाग्य प्रकट करें]
+        </button>
+        
+        <div class="result-box" id="oracleResult">
+            <div class="zodiac-title" id="greetingMessage"></div>
+            <div class="zodiac-name" id="zodiacOutput"></div>
+            <div class="zodiac-desc" id="zodiacDescription"></div>
+        </div>
+    </div>
+
+    <script>
+        function findTrueRashi() {
+            const nameInput = document.getElementById('username').value.trim();
+            const resultBox = document.getElementById('oracleResult');
+            
+            if (nameInput === "") {
+                alert("Please enter a name! [कृपया नाम दर्ज करें!]");
+                return;
+            }
+
+            // Standardize to lowercase for easy matching
+            const lowerName = nameInput.toLowerCase();
+            let finalRashi = "";
+            let description = "";
+
+            // Dynamic algorithmic evaluation based on traditional Akshar sound mappings
+            if (lowerName.startsWith('a') || lowerName.startsWith('l') || lowerName.startsWith('e') || lowerName.startsWith('i')) {
+                finalRashi = "Mesh [मेष] (Aries) ♈";
+                description = "Ruled by Mars. Energetic, courageous, and a natural pioneer. [मंगल ग्रह का शासन। ऊर्जावान, साहसी और एक स्वाभाविक पथप्रदर्शक।]";
+            } else if (lowerName.startsWith('p') || lowerName.startsWith('tth')) {
+                finalRashi = "Kanya [कन्या] (Virgo) ♍";
+                description = "Ruled by Mercury. Smart, analytical, sharp-minded, and highly skilled. [बुध ग्रह का शासन। बुद्धिमान, विश्लेषणात्मक, तेज दिमाग और अत्यधिक कुशल।]";
+            } else if (lowerName.startsWith('b') || lowerName.startsWith('v') || lowerName.startsWith('w')) {
+                finalRashi = "Vrishabha [वृषभ] (Taurus) ♉";
+                description = "Ruled by Venus. Patient, reliable, and deeply artistic. [शुक्र ग्रह का शासन। धैर्यवान, विश्वसनीय और गहरे कलात्मक।]";
+            } else if (lowerName.startsWith('k') || lowerName.startsWith('ch')) {
+                finalRashi = "Mithun [मिथुन] (Gemini) ♊";
+                description = "Ruled by Mercury. Versatile, expressive, and intellectually curious. [बुध ग्रह का शासन। बहुमुखी, अभिव्यंजक और बौद्धिक रूप से जिज्ञासु।]";
+            } else if (lowerName.startsWith('h') || lowerName.startsWith('dd')) {
+                finalRashi = "Kark [कर्क] (Cancer) ♋";
+                description = "Ruled by Moon. Intuitive, empathetic, and protective. [चंद्रमा ग्रह का शासन। सहज, सहानुभूतिपूर्ण और सुरक्षात्मक।]";
+            } else if (lowerName.startsWith('m') || lowerName.startsWith('tt')) {
+                finalRashi = "Simha [सिंह] (Leo) ♌";
+                description = "Ruled by Sun. Majestic, fierce, and holding an imperial presence. [सूर्य ग्रह का शासन। प्रतापी, भयंकर और एक शाही उपस्थिति रखने वाला।]";
+            } else if (lowerName.startsWith('r') || lowerName.startsWith('t')) {
+                finalRashi = "Tula [तुला] (Libra) ♎";
+                description = "Ruled by Venus. Diplomatic, charming, and seeking absolute harmony. [शुक्र ग्रह का शासन। राजनयिक, आकर्षक और पूर्ण सद्भाव की तलाश करने वाला।]";
+            } else if (lowerName.startsWith('n') || lowerName.startsWith('y')) {
+                finalRashi = "Vrishchik [वृश्चिक] (Scorpio) ♏";
+                description = "Ruled by Mars. Intense, powerful, and deeply mystical. [मंगल ग्रह का शासन। तीव्र, शक्तिशाली और गहरे रहस्यमयी।]";
+            } else if (lowerName.startsWith('bh') || lowerName.startsWith('dh') || lowerName.startsWith('f')) {
+                finalRashi = "Dhanu [धनु] (Sagittarius) ♐";
+                description = "Ruled by Jupiter. Philosophical, adventurous, and dynamic. [बृहस्पति ग्रह का शासन। दार्शनिक, साहसी और गतिशील।]";
+            } else if (lowerName.startsWith('kh') || lowerName.startsWith('j')) {
+                finalRashi = "Makar [मकर] (Capricorn) ♑";
+                description = "Ruled by Saturn. Ambitious, highly disciplined, and hardworking. [शनि ग्रह का शासन। महत्वाकांक्षी, अत्यधिक अनुशासित और मेहनती।]";
+            } else if (lowerName.startsWith('g') || lowerName.startsWith('sh') || lowerName.startsWith('s')) {
+                finalRashi = "Kumbha [कुंभ] (Aquarius) ♒";
+                description = "Ruled by Saturn. Progressive, unique, and highly humanitarian. [शनि ग्रह का शासन। प्रगतिशील, अद्वितीय और अत्यधिक मानवीय।]";
+            } else if (lowerName.startsWith('d') || lowerName.startsWith('chm')) {
+                finalRashi = "Meen [मीन] (Pisces) ♓";
+                description = "Ruled by Jupiter. Creative, highly spiritual, and deeply thoughtful. [बृहस्पति ग्रह का शासन। रचनात्मक, अत्यधिक आध्यात्मिक और गहरे विचारशील।]";
+            } else {
+                // Global fallback standard assignment if first letter falls completely outside common sounds
+                finalRashi = "Mesh [मेष] (Aries) ♈";
+                description = "A powerful stellar configuration of strength. [शक्ति का एक शक्तिशाली तारकीय विन्यास।]";
+            }
+
+            // Update DOM fields accurately
+            document.getElementById('greetingMessage').innerText = `Calculated Rashi for ${nameInput} [${nameInput} के लिए गणना की गई राशि]:`;
+            document.getElementById('zodiacOutput').innerText = finalRashi;
+            document.getElementById('zodiacDescription').innerText = description;
+
+            // Trigger structural opening fade animation
+            resultBox.classList.add('reveal');
+        }
+    </script>
+</body>
+</html>
